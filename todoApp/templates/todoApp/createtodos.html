@@ -4,18 +4,18 @@
    <div class="row justify-content-center mt-5">
         <div class="col-md-5">
             <h3 class="text-center text-danger">New Todo</h3>
-            <hr class="w-50 my-auto bg-dark">
+            <hr class="w-100 my-auto bg-dark">
         </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-5">
+   </div>
+   <div class="row justify-content-center mt-3">
+        <div class="col-md-5 border=1">
             {% if error %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
                 </div>
             {% endif %}
-            <div class="alert alert-danger w-50>
-                <form method="POST">
+
+                <form method="POST" >
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="title">Title</label>
@@ -31,7 +31,7 @@
                     </div>
                     <button type="submit" class="btn btn-danger">Save</button>
                 </form>
-            </div>
+
         </div>
-    </div>
+   </div>
 {% endblock %}
