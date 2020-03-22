@@ -2,22 +2,21 @@
 {% extends 'todoApp/base.html' %}
 
 {% block content %}
-
-<h3 class="text-center text-success pt-3"> COMPLETED TODOS</h3>
-<hr class="w-50 my-auto bg-dark">
-
-  <div class="list-group p-10 text-dark pt-2">
-   {% for todo in todos %}
-    <li class="list-group-item list-group-item-success">
-
-        <a href="{% url 'viewtodo' todo.id %}" class="text-dark">
-       {{ todo.title }}
-        {% if todo.memo %} - {{ todo.memo }} {% endif %}
-        {{ todo.datecomplited|date:'M j Y H:i' }}
-        </a>
-
-    </li>
-   {% endfor %}
-  </div>>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h3 class="text-center text-success"> COMPLETED TODOS</h3>
+            <hr class="w-50 my-auto bg-dark">
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {% for todo in todos %}
+                    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action{% if todo.important %} list-group-item-danger{% endif %}">
+                    <b>{{ todo.title }}</b> - Completed {{ todo.datecompleted|date:'M j Y H:i' }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

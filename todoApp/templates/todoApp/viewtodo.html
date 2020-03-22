@@ -18,20 +18,20 @@
             <label class="form-check-label" for="important">Important</label>
         </div>
         <button type="submit" class="btn btn-warning">UPDATE</button>
-        <button type="submit" class="btn btn-success">COMPLETE</button>
-        <button type="submit" class="btn btn-danger">DELETE</button>
+        <button type="button" class="btn btn-success" onclick="$('#complete').click()">COMPLETE</button>
+        <button type="button" class="btn btn-danger" onclick="$('#delete').click()">DELETE</button>
     </form>
-    {% if todo.datecompleted is None %}
+    {% if todo.datecomplited is None %}
      <form style='display: none;' method="POST" action="{% url 'completetodo' todo.id %}">
         {% csrf_token %}
-        <button type="submit" class="btn btn-success">COMPLETE</button>
+        <button id=complete type="submit" class="btn btn-success">COMPLETE</button>
      </form>
     {% endif %}
 
 
     <form style='display: none;' method="POST" action="{% url 'deletetodo' todo.id %}">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">DELETE</button>
+        <button id=delete type="submit" class="btn btn-danger">DELETE</button>
     </form>
 </div>
 {% endblock %}

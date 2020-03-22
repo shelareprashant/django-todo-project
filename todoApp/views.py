@@ -86,8 +86,10 @@ def viewtodo(request, todo_pk):
 @login_required
 def completetodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    print(todo)
     if request.method == 'POST':
         todo.datecomplited = timezone.now()
+        print(todo)
         todo.save()
         return redirect('currenttodos')
 

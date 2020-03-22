@@ -2,19 +2,32 @@
 {% extends 'todoApp/base.html' %}
 
 {% block content %}
-
-    <h3 class="text-center text-warning pt-3"> CURRENT TODOS </h3>
-    <hr class="w-25 my-auto bg-dark">
-
-    <div class="list-group p-10 text-dark pt-3">
-   {% for todo in todos %}
-    <li class="list-group-item list-group-item-warning">
-        <a href="{% url 'viewtodo' todo.id %}" class="text-dark">
-        {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
-        {% if todo.memo %} - {{ todo.memo }} {% endif %}
-        </a>
-    </li>
-   {% endfor %}
-   </div>
-
+       <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if todos %}
+                <h3 class="text-center text-warning">{{ todos.count }} CURRENT TODO{{ todos.count|pluralize }}</h3>
+            {% else %}
+                   <h3 class="text-center text-warning"> CURRENT TODOS </h3>
+            {% endif %}
+            <hr class="w-50 my-auto bg-dark">
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if todos %}
+            <div class="list-group">
+                {% for todo in todos %}
+                    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action{% if todo.important %} list-group-item-danger{% endif %}">
+                        <b>{{ todo.title }}</b>{% if todo.memo %} - {{ todo.memo|truncatechars:30 }}{% endif %}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Looks like you don't have any todos! Nice work.</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'createtodos' %}">New Todo</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
 {% endblock %}
