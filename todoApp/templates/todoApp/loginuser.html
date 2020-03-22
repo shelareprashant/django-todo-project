@@ -1,0 +1,19 @@
+{% extends 'todoApp/base.html' %}
+
+{% block content %}
+<center>
+<h3 class="text-center text-success pt-3">LOGIN PAGE</h3>
+<hr class="w-50 my-auto bg-dark">
+<h3>{{ error }}</h3>
+<div class="container" >
+   <div class="alert alert-success w-50">
+       <form method="POST">
+          {{ form.as_p }}
+           {% csrf_token %}
+          <button type="submit" class="btn btn-success">LOGIN</button>
+       </form>
+    </div>
+</div>
+    <hr class="w-50 my-auto bg-dark">
+</center>
+{% endblock %}

@@ -1,0 +1,20 @@
+
+{% extends 'todoApp/base.html' %}
+
+{% block content %}
+
+    <h3 class="text-center text-warning pt-3"> CURRENT TODOS </h3>
+    <hr class="w-25 my-auto bg-dark">
+
+    <div class="list-group p-10 text-dark pt-3">
+   {% for todo in todos %}
+    <li class="list-group-item list-group-item-warning">
+        <a href="{% url 'viewtodo' todo.id %}" class="text-dark">
+        {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
+        {% if todo.memo %} - {{ todo.memo }} {% endif %}
+        </a>
+    </li>
+   {% endfor %}
+   </div>
+
+{% endblock %}

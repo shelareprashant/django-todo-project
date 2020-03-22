@@ -1,0 +1,34 @@
+{% extends 'todoApp/base.html' %}
+
+{% block content %}
+<center>
+<h3 class="text-center text-primary pt-3">Sign Up Form</h3>
+<hr class="w-50 my-auto bg-dark">
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+{% endif %}
+<div class="alert alert-primary w-75 text-left">
+ <form method="POST">
+     {% csrf_token %}
+     <div class="form-group">
+         <label for="username">Username</label>
+         <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp">
+         <small id="usernameHelp" class="form-text text-muted">Your username must be unique. We'll let you know if someone has taken it already.</small>
+     </div>
+     <div class="form-group">
+         <label for="password1">Password</label>
+         <input type="password" name="password1" class="form-control" id="password1">
+     </div>
+     <div class="form-group">
+         <label for="password2">Confirm Password</label>
+         <input type="password" name="password2" class="form-control" id="password2">
+     </div>
+   <button class="btn btn-primary" type="submit">Sign Up</button>
+ </form>
+</div>
+<hr class="w-50 my-auto bg-dark">
+</center>
+{% endblock %}
+
